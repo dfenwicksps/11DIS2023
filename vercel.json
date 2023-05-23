@@ -8,7 +8,7 @@
     ],
     "routes": [
         {
-            "src": "/ExternalAPI(.*)",
+            "src": "./ExternalAPI(.*)",
             "dest": "/"
         }
     ]
