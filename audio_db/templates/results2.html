@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Music Albums Search</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+
+    <style>
+      table {
+      font-family: arial, sans-serif;
+
+        border-collapse: collapse;
+      }
+      th, td {
+        border: 1px solid black;
+        padding: 5px;
+      }
+
+    </style>
+  </head>
+  <body>
+  <header class="w3-container w3-light-blue">
+    <h1 style="font-family: serif">Albums for {{ artist }}</h1>
+  </header>
+  {% if albums == None %}
+    <p>Artist Not Found</p>
+  {% else %}
+  <table class="w3-yellow">
+  <thead class="w3-orange">
+    <tr>
+      <th>
+        <a href="/sort?artist={{ artist }}&sort_order=name_asc">▲</a>
+        Album Name
+        <a href="/sort?artist={{ artist }}&sort_order=name_desc">▼</a>
+      </th>
+      <th>
+        <a href="/sort?artist={{ artist }}&sort_order=year_asc">▲</a>
+        Release Year
+        <a href="/sort?artist={{ artist }}&sort_order=year_desc">▼</a>
+      </th>
+    </tr>
+  </thead>
+    <tbody>
+      {% for album in albums %}
+      <tr>
+        <td>{{ album.strAlbum }}</td>
+        <td>{{ album.intYearReleased }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+  <a href="/">Search another artist</a>
+</body>
+
+</html>
