@@ -40,34 +40,22 @@ def home():
             tr:nth-child(even) {
                 background-color: #f2f2f2;
             }
+            .question {
+                font-weight: bold;
+            }
         </style>
-                <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Your name</th>
-                    <th>Your Position</th>
-                    <th>Teachers</th>
-                    <th>Current work</th>
-                    <th>Challenges</th>
-                    <th>Help</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for row in data %}
-                <tr>
-                    <td>{{ row['ID'] }}</td>
-                    <td>{{ row['Your_name'] }}</td>
-                    <td>{{ row['Your_Position'] }}</td>
-                    <td>{{ row['Teachers'] }}</td>
-                    <td>{{ row['Current_work'] }}</td>
-                    <td>{{ row['Challenges'] }}</td>
-                    <td>{{ row['Help'] }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                 {% for row in data %}
+            <div class="qa-block">
+                <div class="question">Your name: </div><div>{{ row.Your_name }}</div>
+                <div class="question">Your Position: </div><div>{{ row.Your_Position }}</div>
+                <div class="question">Teachers you mostly work with: </div><div>{{ row.Teachers }}</div>
+                <div class="question">What are you currently working on? </div><div>{{ row.Current_work }}</div>
+                <div class="question">What has been the biggest challenge in your role? </div><div>{{ row.Challenges }}</div>
+                <div class="question">What has helped you the most in your role? </div><div>{{ row.Help }}</div>
+                <hr>
+            </div>
+        {% endfor %}
     ''', data=data_list)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5001, debug=True)
